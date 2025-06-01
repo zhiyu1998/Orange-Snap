@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Heart } from "lucide-react";
+import { Github } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { defaultSettings, ImageSettings } from "./types";
 import { ImagePreview } from "./image-preview";
@@ -92,6 +92,15 @@ export function ScreenshotBeautifier() {
               <img src="favicon.png" />
             </div>
             <h1 className="text-2xl font-bold text-gray-800">Orange Snap</h1>
+            <a 
+              href="https://github.com/zhiyu1998/Orange-Snap" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="ml-2 text-gray-600 hover:text-gray-900 transition-colors"
+              title="View on GitHub"
+            >
+              <Github size={24} />
+            </a>
           </div>
           <p className="text-gray-600">让截图变得更美 ✨</p>
         </div>

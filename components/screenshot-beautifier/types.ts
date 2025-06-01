@@ -77,28 +77,28 @@ export const patternPresets: PatternPreset[] = [
 
 export const wallpaperPresets: WallpaperPreset[] = [
     {
-        name: "海獭",
-        url: "https://cn.bing.com/th?id=OHR.KelpOtter_ZH-CN8297228161_1920x1200.jpg",
-        thumbnail: "https://cn.bing.com/th?id=OHR.KelpOtter_ZH-CN8297228161_1920x1200.jpg&w=200&h=100",
+        name: "Art1",
+        url: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?q=80&w=2644&auto=format&fit=crop",
+        thumbnail: "https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=700&auto=format&fit=crop&q=60",
     },
     {
-        name: "山脉",
-        url: "https://cn.bing.com/th?id=OHR.MountHamilton_ZH-CN4280549129_1920x1080.jpg",
-        thumbnail: "https://cn.bing.com/th?id=OHR.MountHamilton_ZH-CN4280549129_1920x1080.jpg&w=200&h=100",
+        name: "Art2",
+        url: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?q=80&w=2634&auto=format&fit=crop",
+        thumbnail: "https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=700&auto=format&fit=crop&q=60",
     },
     {
-        name: "羚羊",
-        url: "https://cn.bing.com/th?id=OHR.OrangeImpala_ZH-CN3417660107_1920x1080.jpg",
-        thumbnail: "https://cn.bing.com/th?id=OHR.OrangeImpala_ZH-CN3417660107_1920x1080.jpg&w=200&h=100",
+        name: "Art3",
+        url: "https://images.unsplash.com/photo-1579541591970-e5780dc6b31f?q=80&w=2686&auto=format&fit=crop",
+        thumbnail: "https://images.unsplash.com/photo-1579541591970-e5780dc6b31f?w=700&auto=format&fit=crop&q=60",
     },
     {
-        name: "每日一图",
-        url: "https://bing.ee123.net/img/",
-        thumbnail: "https://bing.ee123.net/img/?size=400x240",
+        name: "Mac1",
+        url: "https://images.unsplash.com/photo-1687042277586-971369d3d241?q=80&w=2670&auto=format&fit=crop",
+        thumbnail: "https://images.unsplash.com/photo-1687042277586-971369d3d241?w=700&auto=format&fit=crop&q=60",
     },
     {
-        name: "随机一图",
-        url: "https://bing.ee123.net/img/rand",
-        thumbnail: "https://bing.ee123.net/img/rand?size=400x240",
-    },
-] 
+        name: "Mac2",
+        url: "https://images.unsplash.com/photo-1687042277425-89b414406d3a?q=80&w=2670&auto=format&fit=crop",
+        thumbnail: "https://images.unsplash.com/photo-1687042277425-89b414406d3a?w=700&auto=format&fit=crop&q=60",
+    }
+]
