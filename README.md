@@ -1,2 +1,5 @@
 # Orange-Snap
-大橘的截图美化工具
+
+简洁实用的截图美化工具
+
+![](./images/image.png)
