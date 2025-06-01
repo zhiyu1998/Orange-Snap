@@ -41,6 +41,8 @@ export const SettingsPanel = ({
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isExtractingColors, setIsExtractingColors] = useState(false);
   const [aiColors, setAiColors] = useState<string[]>([]);
+  const [aiGradients, setAiGradients] = useState<Array<{ start: string; end: string }>>([]);
+  const [isExtractingGradients, setIsExtractingGradients] = useState(false);
 
   const handleWallpaperUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -143,6 +145,55 @@ export const SettingsPanel = ({
       });
     } finally {
       setIsExtractingColors(false);
+    }
+  };
+
+  const extractGradientsFromImage = async () => {
+    if (!image) {
+      toast({
+        title: "未检测到图片",
+        description: "请先上传一张图片",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsExtractingGradients(true);
+    try {
+      // Convert the HTMLImageElement to a File
+      const canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+      const ctx = canvas.getContext('2d');
+      ctx?.drawImage(image, 0, 0);
+      
+      // Convert canvas to blob
+      const blob = await new Promise<Blob>((resolve) => 
+        canvas.toBlob((blob) => resolve(blob!), 'image/jpeg', 0.9)
+      );
+      
+      // Create a file from the blob
+      const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+      
+      // Extract gradients using the service
+      const service = new ColorExtractionService();
+      const gradients = await service.extractGradients(file);
+      
+      setAiGradients(gradients);
+      
+      toast({
+        title: "渐变提取成功 ✨",
+        description: "已从图片中提取渐变色彩",
+      });
+    } catch (error: any) {
+      console.error("Error extracting gradients:", error);
+      toast({
+        title: "渐变提取失败",
+        description: error.message || "无法从图片中提取渐变色彩",
+        variant: "destructive",
+      });
+    } finally {
+      setIsExtractingGradients(false);
     }
   };
 
@@ -290,6 +341,55 @@ export const SettingsPanel = ({
                 ></button>
               ))}
             </div>
+            
+            {/* AI Gradient Extraction */}
+            <div className="mb-3">
+              <div className="flex justify-between items-center">
+                <Label className="text-sm font-medium text-gray-700">AI提取的渐变</Label>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={extractGradientsFromImage}
+                  disabled={isExtractingGradients || !image}
+                  className="h-7 text-xs"
+                >
+                  {isExtractingGradients ? (
+                    <>
+                      <Loader2 className="mr-1 h-3 w-3 animate-spin" />
+                      处理中...
+                    </>
+                  ) : (
+                    <>
+                      <Settings className="mr-1 h-3 w-3" />
+                      提取渐变
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              {aiGradients.length > 0 && (
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  {aiGradients.map((gradient, index) => (
+                    <button
+                      key={index}
+                      onClick={() =>
+                        setSettings((prev) => ({
+                          ...prev,
+                          gradientStart: gradient.start,
+                          gradientEnd: gradient.end,
+                        }))
+                      }
+                      className="h-8 rounded-lg border-2 border-gray-200 hover:border-gray-300"
+                      style={{
+                        background: `linear-gradient(45deg, ${gradient.start}, ${gradient.end})`,
+                      }}
+                      title={`${gradient.start} → ${gradient.end}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <div className="space-y-2">
               <div className="flex gap-2">
                 <Input
