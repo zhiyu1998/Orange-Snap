@@ -1,6 +1,6 @@
 # Orange-Snap
 
-简洁实用的截图美化工具
+简洁实用的截图美化工具，让截图变得更美✨
 
 ![](./images/image.png)
 
@@ -26,12 +26,12 @@ AI_MODEL=gemini-2.0-flash
 ## 开发
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## 构建
 
 ```bash
-npm run build
-npm start
+pnpm run build
+pnpm start
 ```

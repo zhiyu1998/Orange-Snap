@@ -4,8 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'Orange Snap',
-  description: '让截图变得更美',
-  generator: 'v0.dev',
+  description: '简洁实用的截图美化工具，让截图变得更美✨'
 }
 
 export default function RootLayout({

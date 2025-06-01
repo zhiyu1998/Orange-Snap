@@ -88,8 +88,8 @@ export function ScreenshotBeautifier() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white fill-current" />
+            <div className="w-8 h-8 bg-500 rounded-lg flex items-center justify-center">
+              <img src="favicon.png" />
             </div>
             <h1 className="text-2xl font-bold text-gray-800">Orange Snap</h1>
           </div>
